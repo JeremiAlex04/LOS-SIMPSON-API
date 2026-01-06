@@ -29,7 +29,7 @@ function App() {
       <h1 className="text-center text-white">PERSONAJES DE LOS SIMPSON</h1>
       <div className="row">
         {personajes.map((personaje) => (
-          <div className="col-sm-3 mb-4">
+          <div className="col-sm-3 mb-4 d-flex justify-content-center" key={personaje.id}>
           <div className="card" style={{width: "18rem", border: "4px solid #000000ff"}} key={personaje.id}>
             <img src={`${CDN_BASE}${personaje.portrait_path}`} alt={personaje.name} />
             <h5 className="card-title text-center">{personaje.name}</h5>
