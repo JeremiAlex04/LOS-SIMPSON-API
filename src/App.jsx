@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import simpsonbg from "./assets/img/fondo.webp";
+
 
 function App() {
   //Contenedor de los componentes
@@ -21,8 +23,10 @@ function App() {
   const CDN_BASE = "https://cdn.thesimpsonsapi.com/500";
 
   return (
-    <div className="">
-      <h1 className="">Personajes de Los Simpson</h1>
+    <div style={{backgroundImage: {simpsonbg}, minHeight: '100vh', backgroundSize: 'cover', padding: '20px'}}>
+    {/*Agregar la imagen de assets*/}
+
+      <h1 className="text-center">PERSONAJES DE LOS SIMPSON</h1>
       <div className="row">
         {personajes.map((personaje) => (
           <div className="col-sm-3 mb-4">
