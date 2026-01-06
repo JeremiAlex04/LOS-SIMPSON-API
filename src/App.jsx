@@ -17,17 +17,22 @@ function App() {
     getpersonajes();
   }, [])
 
+  //URL de la imagen
+  const CDN_BASE = "https://cdn.thesimpsonsapi.com/500";
 
   return (
-    <div className="body">
-      <h1 className="h1">Personajes de Los Simpson</h1>
-      <ul>
+    <div className="">
+      <h1 className="">Personajes de Los Simpson</h1>
+      <div className="row">
         {personajes.map((personaje) => (
-          <li key={personaje.id} >
-          {personaje.name}
-          </li>
+          <div className="col-sm-3 mb-4">
+          <div className="card" style={{width: "18rem"}} key={personaje.id}>
+            <img src={`${CDN_BASE}${personaje.portrait_path}`} alt={personaje.name} />
+            <h5 className="card-title text-center">{personaje.name}</h5>
+          </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   )
 }
