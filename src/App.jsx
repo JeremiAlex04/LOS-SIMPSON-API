@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import simpsonbg from "./assets/img/fondo.webp";
+import fondo from "./assets/img/fondo1.jpg";
 
 
 function App() {
@@ -23,10 +23,10 @@ function App() {
   const CDN_BASE = "https://cdn.thesimpsonsapi.com/500";
 
   return (
-    <div style={{backgroundImage: {simpsonbg}, minHeight: '100vh', backgroundSize: 'cover', padding: '20px'}}>
+    <div style={{backgroundColor: 'rgb(0,191,255)', minHeight: '100vh', backgroundSize: 'cover', padding: '10px'}}>
     {/*Agregar la imagen de assets*/}
 
-      <h1 className="text-center">PERSONAJES DE LOS SIMPSON</h1>
+      <h1 className="text-center text-white">PERSONAJES DE LOS SIMPSON</h1>
       <div className="row">
         {personajes.map((personaje) => (
           <div className="col-sm-3 mb-4">
