@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import fondo from "./assets/img/fondo1.jpg";
+import logo from "./assets/img/logo.svg";
 
 
 function App() {
@@ -23,10 +24,13 @@ function App() {
   const CDN_BASE = "https://cdn.thesimpsonsapi.com/500";
 
   return (
-    <div style={{backgroundColor: 'rgb(0,191,255)', minHeight: '100vh', backgroundSize: 'cover', padding: '10px'}}>
+    <div className="container-fluid" style={{backgroundColor: 'rgb(0,191,255)', width:'auto', height: 'auto'}}>
     {/*Agregar la imagen de assets*/}
 
-      <h1 className="text-center text-white">PERSONAJES DE LOS SIMPSON</h1>
+      <div className="h-5 w-auto">
+        <img src={logo} alt="logo de simpson" className="img-fluid mx-auto d-block" style={{width:'40%', height:'auto'}} />
+      </div>
+      
       <div className="row">
         {personajes.map((personaje) => (
           <div className="col-sm-3 mb-4 d-flex justify-content-center" key={personaje.id}>
