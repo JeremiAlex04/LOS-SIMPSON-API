@@ -21,6 +21,35 @@ function App() {
   }, [])
 
 
+  const mostrarAño = (fecha) => {
+    // Obtener el año actual
+    let hoy = new Date();
+    let añoActual = hoy.getFullYear();
+
+    //Para obtener el año de una fecha
+    let fechaObj = new Date(fecha);
+    let añoEspecifico = fechaObj.getFullYear();
+
+    return añoEspecifico;
+  }
+
+  //Calcular la año de nacimiento 
+  const calAñoNac = (edad) => {
+
+    if (edad == null) {
+      return "No hay registro"
+    } else {
+      //Obtener el año actual
+      let hoy = new Date();
+      let añoActual = hoy.getFullYear();
+      let añoNac = añoActual - edad;
+      return añoNac;
+    }
+  }
+
+
+
+
   //URL de la imagen
   const CDN_BASE = "https://cdn.thesimpsonsapi.com/500";
 
@@ -34,7 +63,7 @@ function App() {
 
       <div className="row">
         {personajes.map((personaje) => (
-          <div className="col-sm-3 mb-4 d-flex justify-content-center" key={personaje.id}>
+          <div className="col-12 col-md-4 col-lg-3 p-2 d-flex justify-content-center " key={personaje.id}>
             {/*Tarjeta*/}
             <div className="card shadow rounded" style={{ width: "18rem", border: "4px solid #000000ff" }} key={personaje.id}>
               <img className="card-img-top" src={`${CDN_BASE}${personaje.portrait_path}`} alt={personaje.name} />
@@ -43,6 +72,7 @@ function App() {
                 {/*Datos personales*/}
                 <h6 className="card-subtitle mb-2 text-black text-center">Genero: {personaje.gender == "Male" ? "Masculino" : "Femenino"}</h6>
                 <h6 className="card-subtitle mb-2 text-black text-center">Edad: {personaje.age == null ? "No hay registro" : personaje.age + " años"}</h6>
+                <h6 className="card-subtitle mb-2 text-black text-center">Fecha de Nacimiento: {personaje.birthdate == null ? calAñoNac(personaje.age) : mostrarAño(personaje.birthdate)}</h6>
               </div>
               <div className="card-footer text-center">
                 <small className="text-body text-center">
