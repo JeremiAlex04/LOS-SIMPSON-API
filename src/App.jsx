@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import fondo from "./assets/img/fondo1.jpg";
 import logo from "./assets/img/logo.svg";
-import { Modal } from "bootstrap";
+import { Modal } from "react-bootstrap";
 
 
 function App() {
@@ -89,25 +89,37 @@ function App() {
           </div>
         ))}
 
-        {/*Modal*/}
         {personajeSeleccionado && (
-          <Modal>
+          <Modal
+            show={mostrar}
+            onHide={() => setMostrar(false)}
+            centered
+          >
             <Modal.Header closeButton>
-              <Modal.Title>Informacion Adicional</Modal.Title>
+              <Modal.Title>{personajeSeleccionado.name}</Modal.Title>
             </Modal.Header>
+
             <Modal.Body className="text-center">
-              {/*Datos personales*/}
-              <h6 className="card-subtitle mb-2 text-black text-center">Genero: {personaje.gender == "Male" ? "Masculino" : "Femenino"}</h6>
-              <h6 className="card-subtitle mb-2 text-black text-center">Edad: {personaje.age == null ? "No hay registro" : personaje.age + " años"}</h6>
-              <h6 className="card-subtitle mb-2 text-black text-center">Fecha de Nacimiento: {personaje.birthdate == null ? calAñoNac(personaje.age) : mostrarAño(personaje.birthdate)}</h6>
+              <h6>Género: {personajeSeleccionado.gender === "Male" ? "Masculino" : "Femenino"}</h6>
+              <h6>
+                Edad: {personajeSeleccionado.age ?? "No hay registro"}
+              </h6>
+              <h6>
+                Año de nacimiento:{" "}
+                {personajeSeleccionado.birthdate
+                  ? mostrarAño(personajeSeleccionado.birthdate)
+                  : calAñoNac(personajeSeleccionado.age)}
+              </h6>
             </Modal.Body>
-            <Modal.Footer>
-              <small className="text-body text-center">
-                Estado: {personaje.status == "Alive" ? "Vivo" : "Fallecido"}
+
+            <Modal.Footer className="justify-content-center">
+              <small>
+                Estado: {personajeSeleccionado.status === "Alive" ? "Vivo" : "Fallecido"}
               </small>
             </Modal.Footer>
           </Modal>
         )}
+
       </div>
     </div>
   )
